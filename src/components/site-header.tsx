@@ -14,7 +14,6 @@ export function SiteHeader({ locale, overlay = false }: { locale: Locale; overla
         <nav className="desktop-nav" aria-label="Primary navigation">
           <Link href={`/${locale}/thinking`}>{copy.nav.thinking}</Link>
           <Link href={`/${locale}/work`}>{copy.nav.work}</Link>
-          <Link href={`/${locale}#services`}>{copy.nav.services}</Link>
           <LanguageSwitcher locale={locale} />
           <a className="nav-cta" href="https://www.linkedin.com/in/borasipal/" target="_blank" rel="noreferrer">{copy.nav.conversation}<span className="sr-only"> (opens in a new tab)</span></a>
         </nav>

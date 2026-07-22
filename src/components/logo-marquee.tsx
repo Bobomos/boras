@@ -6,10 +6,14 @@ const logos = [
   ["Frame 777.png", "Acheval", 116], ["Frame 778.png", "Bang & Prix", 116], ["Frame 779.png", "ArtBizTech", 116],
 ] as const;
 
-function LogoSet() {
-  return <>{logos.map(([file, name, width]) => <div className="client-logo" key={file} aria-label={name}><Image src={`/logos/clients/${file}`} alt="" width={width} height={40} sizes="116px" /></div>)}</>;
+function LogoSet({ duplicate = false }: { duplicate?: boolean }) {
+  return <>{logos.map(([file, name, width]) => (
+    <div className="client-logo" key={file} aria-hidden={duplicate || undefined}>
+      <Image src={`/logos/clients/${file}`} alt={duplicate ? "" : name} width={width} height={40} sizes="116px" />
+    </div>
+  ))}</>;
 }
 
 export function LogoMarquee() {
-  return <div className="marquee" aria-label="Selected clients"><div className="marquee__track"><LogoSet /><LogoSet /></div></div>;
+  return <div className="marquee" role="group" aria-label="Selected clients"><div className="marquee__track"><LogoSet /><LogoSet duplicate /></div></div>;
 }

@@ -20,7 +20,6 @@ export function MobileNavigation({ locale }: { locale: Locale }) {
           <nav aria-label="Mobile navigation">
             <Link href={`/${locale}/thinking`} onClick={() => setOpen(false)}>{copy.nav.thinking}</Link>
             <Link href={`/${locale}/work`} onClick={() => setOpen(false)}>{copy.nav.work}</Link>
-            <Link href={`/${locale}#services`} onClick={() => setOpen(false)}>{copy.nav.services}</Link>
             <a href="https://www.linkedin.com/in/borasipal/" target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>{copy.nav.conversation}<span className="sr-only"> (opens in a new tab)</span></a>
           </nav>
           <LanguageSwitcher locale={locale} compact />

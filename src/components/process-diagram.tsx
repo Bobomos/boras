@@ -17,7 +17,7 @@ export function ProcessDiagram() {
   const animationData = isDesktop ? widescreenAnimation : mobileAnimation;
 
   return (
-    <div className={`process-diagram process-diagram--${isDesktop ? "wide" : "mobile"}`} aria-label="A process moving from complexity through context, clarity, structure, direction and system to launch">
+    <div className={`process-diagram process-diagram--${isDesktop ? "wide" : "mobile"}`} role="img" aria-label="A process moving from complexity through context, clarity, structure, direction and system to launch">
       {isDesktop && (
         <svg className="process-diagram__extensions" viewBox="0 0 1400 176" preserveAspectRatio="none" aria-hidden="true">
           <path d="M 0 49 C 32 65, 79 71, 134 71 C 205 71, 250 27, 292 27" />
