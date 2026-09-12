@@ -5,7 +5,7 @@ type LocalizedCaseStudy = { summary: string; description: string; sections: Proj
 export const localizedCaseStudies: Record<"it" | "tr", { lexhero: LocalizedCaseStudy; concoro: LocalizedCaseStudy }> = {
   it: {
     lexhero: {
-      summary: "Trasformare una piattaforma legale frammentata in uno spazio di lavoro AI-native.",
+      summary: "Trasformare una piattaforma legale frammentata in uno spazio di lavoro basato sull’AI.",
       description: "Ho contribuito a trasformare LexHero da una raccolta di strumenti legali in uno spazio coerente dove gli avvocati possono creare, analizzare, verificare, personalizzare e gestire documenti con l’AI.",
       sections: [
         {

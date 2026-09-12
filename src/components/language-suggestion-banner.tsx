@@ -4,10 +4,19 @@ import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { type Locale } from "@/content/types";
 
-const messages: Record<Locale, { question: string; action: string }> = {
-  en: { question: "Would you prefer to read the site in English?", action: "Switch to English" },
-  it: { question: "Preferisci leggere il sito in italiano?", action: "Passa all’italiano" },
-  tr: { question: "Siteyi Türkçe okumak ister misiniz?", action: "Türkçeye geç" },
+const messages: Record<Locale, { question: Record<Locale, string>; action: Record<Locale, string> }> = {
+  en: {
+    question: { en: "", it: "Would you prefer to read the site in Italian?", tr: "Would you prefer to read the site in Turkish?" },
+    action: { en: "", it: "Switch to Italian", tr: "Switch to Turkish" },
+  },
+  it: {
+    question: { en: "Preferisci leggere il sito in inglese?", it: "", tr: "Preferisci leggere il sito in turco?" },
+    action: { en: "Passa all’inglese", it: "", tr: "Passa al turco" },
+  },
+  tr: {
+    question: { en: "Siteyi İngilizce okumak ister misiniz?", it: "Siteyi İtalyanca okumak ister misiniz?", tr: "" },
+    action: { en: "İngilizceye geç", it: "İtalyancaya geç", tr: "" },
+  },
 };
 
 function browserLocale(): Locale | null {
@@ -39,8 +48,8 @@ export function LanguageSuggestionBanner({ locale }: { locale: Locale }) {
 
   return (
     <aside className="language-banner" aria-label="Language suggestion">
-      <span>{messages[suggested].question}</span>
-      <button onClick={switchLanguage}>{messages[suggested].action} <span aria-hidden="true">→</span></button>
+      <span>{messages[locale].question[suggested]}</span>
+      <button onClick={switchLanguage}>{messages[locale].action[suggested]} <span aria-hidden="true">→</span></button>
       <button className="language-banner__close" onClick={dismiss} aria-label="Dismiss language suggestion">×</button>
     </aside>
   );

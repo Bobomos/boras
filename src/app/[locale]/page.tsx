@@ -29,7 +29,7 @@ export default async function HomePage({ params }: LocalePageProps) {
         <SiteHeader locale={locale} overlay />
         <div className="hero__content">
           <p className="eyebrow">{copy.hero.eyebrow}</p>
-          <h1>{copy.hero.before}<br /><em>{copy.hero.emphasis}</em> {copy.hero.after}</h1>
+          <h1 className={locale === "tr" ? "hero-title hero-title--turkish" : "hero-title"} aria-label={`${copy.hero.before} ${copy.hero.emphasis} ${copy.hero.after}`}><span aria-hidden="true">{copy.hero.before}<br /><em>{copy.hero.emphasis}</em> <span className="hero-title__after">{copy.hero.after}</span></span></h1>
           <div className="hero__actions"><PillButton href="#selected-work">{copy.hero.primary}</PillButton><PillButton href="#selected-thinking" variant="outline">{copy.hero.secondary}</PillButton></div>
           <p className="hero__support">{copy.hero.support}</p>
         </div>
