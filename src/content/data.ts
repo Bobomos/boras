@@ -3,6 +3,7 @@ import { localizedCaseStudies, localizedLudwig, localizedProjectMeta } from "./c
 import { afterlayerCaseStudy } from "./afterlayer-case-study";
 import { afterlayerCaseStudyIt } from "./afterlayer-case-study-it";
 import { afterlayerCaseStudyTr } from "./afterlayer-case-study-tr";
+import { customerLoyaltyArticles } from "./customer-loyalty";
 
 type SiteCopy = {
   languageName: string;
@@ -847,11 +848,12 @@ function makeArticles(locale: Locale): Article[] {
     : locale === "it"
       ? [articleTranslations.it[0], articleTranslations.it[1], articleTranslations.en.find((article) => article.title === "Il riacquisto non è un problema di email marketing")!, ...articleTranslations.it.slice(2)]
       : articleTranslations.tr;
-  return articleBase.map((base, index) => {
+  const existingArticles = articleBase.map((base, index) => {
     const translation = translations[index];
     if (!translation) throw new Error(`Missing ${locale} translation for article: ${base.slug}`);
     return { ...base, tags: [...base.tags], ...translation, seoTitle: translation.title, seoDescription: translation.description };
   });
+  return [customerLoyaltyArticles[locale], ...existingArticles];
 }
 
 export const articles: Record<Locale, Article[]> = { en: makeArticles("en"), it: makeArticles("it"), tr: makeArticles("tr") };
