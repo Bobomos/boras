@@ -4,6 +4,7 @@ import { afterlayerCaseStudy } from "./afterlayer-case-study";
 import { afterlayerCaseStudyIt } from "./afterlayer-case-study-it";
 import { afterlayerCaseStudyTr } from "./afterlayer-case-study-tr";
 import { customerLoyaltyArticles } from "./customer-loyalty";
+import { productManualArticles } from "./product-manuals";
 
 type SiteCopy = {
   languageName: string;
@@ -871,7 +872,7 @@ function makeArticles(locale: Locale): Article[] {
     if (!translation) throw new Error(`Missing ${locale} translation for article: ${base.slug}`);
     return { ...base, tags: [...base.tags], ...translation, seoTitle: translation.title, seoDescription: translation.description };
   });
-  return [customerLoyaltyArticles[locale], ...existingArticles];
+  return [productManualArticles[locale], customerLoyaltyArticles[locale], ...existingArticles];
 }
 
 export const articles: Record<Locale, Article[]> = { en: makeArticles("en"), it: makeArticles("it"), tr: makeArticles("tr") };
