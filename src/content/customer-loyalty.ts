@@ -16,8 +16,8 @@ const articleDetails = {
 export const customerLoyaltyArticles: Record<Locale, Article> = {
   en: {
     ...articleDetails,
-    title: "Customer Loyalty Is Built in Very Boring Moments",
-    seoTitle: "Customer Loyalty Is Built in Very Boring Moments",
+    title: "Customer loyalty is built in very boring moments",
+    seoTitle: "Customer loyalty is built in very boring moments",
     description: "What finding the right spare part, registering a warranty, and getting a useful answer from support have to do with what we buy next.",
     seoDescription: "What finding the right spare part, registering a warranty, and getting a useful answer from support have to do with what we buy next.",
     intro: "Looking for a small plastic part for a vacuum cleaner can expose some gaps in your vocabulary. You know what the part does. You know where it goes. You just don’t know what it’s called. Unfortunately, “the little thing where the hose meets the body” gets you nowhere on the company’s website.",
@@ -126,8 +126,8 @@ export const customerLoyaltyArticles: Record<Locale, Article> = {
   },
   tr: {
     ...articleDetails,
-    title: "Müşteri Sadakati Sıkıcı Anlarda Oluşur",
-    seoTitle: "Müşteri Sadakati Sıkıcı Anlarda Oluşur",
+    title: "Müşteri sadakati sıkıcı anlarda oluşur",
+    seoTitle: "Müşteri sadakati sıkıcı anlarda oluşur",
     description: "Doğru yedek parçayı bulmak, garantiyi kaydetmek ve destekten işe yarayan bir cevap almak bir sonraki alışverişi nasıl etkiliyor?",
     seoDescription: "Doğru yedek parçayı bulmak, garantiyi kaydetmek ve destekten işe yarayan bir cevap almak bir sonraki alışverişi nasıl etkiliyor?",
     intro: "Bir elektrikli süpürgenin küçük plastik parçasını ararken insanın kelime dağarcığıyla ilgili bazı sorunlar ortaya çıkıyor. Parçanın ne yaptığını biliyorsunuz. Nereye takıldığını da biliyorsunuz. Ama adını bilmiyorsunuz. “Boruyla gövdenin birleştiği yerdeki küçük şey” açıklaması, ne yazık ki sitenin arama motorunda pek karşılık bulmuyor.",

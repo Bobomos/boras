@@ -16,8 +16,8 @@ const articleDetails = {
 export const productManualArticles: Record<Locale, Article> = {
   en: {
     ...articleDetails,
-    title: "Why Nobody Reads Product Manuals, and Why That’s Not the Customer’s Fault",
-    seoTitle: "Why Nobody Reads Product Manuals, and Why That’s Not the Customer’s Fault",
+    title: "Why nobody reads product manuals, and why that’s not the customer’s fault",
+    seoTitle: "Why nobody reads product manuals, and why that’s not the customer’s fault",
     description: "A blinking light on a coffee machine shows how much work it can take to find a simple answer after you buy a product.",
     seoDescription: "A blinking light on a coffee machine shows how much work it can take to find a simple answer after you buy a product.",
     intro: "You buy a new coffee machine.",
@@ -159,7 +159,7 @@ export const productManualArticles: Record<Locale, Article> = {
       { type: "paragraph", text: "For the customer, they become different things they can do with the product they already own." },
       { type: "paragraph", text: "That distinction matters." },
       { type: "paragraph", text: "Because the customer shouldn’t have to understand the manufacturer’s internal organisation to get help." },
-      { type: "heading", text: "This is where Digital Product Passports become interesting" },
+      { type: "heading", text: "This is where digital product passports become interesting" },
       { type: "paragraph", text: "Europe’s Digital Product Passport initiative is creating a framework for more structured, accessible product information." },
       { type: "paragraph", text: "The exact requirements depend on the product category, and not every product will be subject to the same obligations." },
       { type: "paragraph", text: "A Digital Product Passport also isn’t automatically a customer portal or a complete post-purchase experience." },
@@ -587,7 +587,7 @@ export const productManualArticles: Record<Locale, Article> = {
       { type: "paragraph", text: "Müşteri içinse zaten sahip olduğu ürünle ilgili yapabileceği farklı işlemler olur." },
       { type: "paragraph", text: "Bu ayrım önemli." },
       { type: "paragraph", text: "Müşteri, yardım alabilmek için üreticinin nasıl örgütlendiğini anlamak zorunda kalmamalı." },
-      { type: "heading", text: "Dijital Ürün Pasaportları tam burada ilginçleşiyor" },
+      { type: "heading", text: "Dijital ürün pasaportları tam burada ilginçleşiyor" },
       { type: "paragraph", text: "Avrupa’nın Dijital Ürün Pasaportu girişimi, ürün bilgilerinin daha düzenli ve erişilebilir olması için bir çerçeve oluşturuyor." },
       { type: "paragraph", text: "Kesin gereklilikler ürün kategorisine göre değişiyor. Her ürün aynı yükümlülüklere tabi olmayacak." },
       { type: "paragraph", text: "Dijital Ürün Pasaportu tek başına bir müşteri portalının ya da eksiksiz bir satış sonrası deneyimin bütün işlevlerini karşılamıyor." },
