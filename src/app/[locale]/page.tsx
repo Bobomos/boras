@@ -29,13 +29,13 @@ export default async function HomePage({ params }: LocalePageProps) {
         <SiteHeader locale={locale} overlay />
         <div className="hero__content">
           <p className="eyebrow">{copy.hero.eyebrow}</p>
-          <h1 className={locale === "tr" ? "hero-title hero-title--turkish" : "hero-title"} aria-label={`${copy.hero.before} ${copy.hero.emphasis} ${copy.hero.after}`}><span aria-hidden="true">{copy.hero.before}<br /><em>{copy.hero.emphasis}</em> <span className="hero-title__after">{copy.hero.after}</span></span></h1>
+          <h1 className={locale === "tr" ? "hero-title hero-title--turkish" : "hero-title"} aria-label={`${copy.hero.before} ${copy.hero.emphasis} ${copy.hero.after}`}><span aria-hidden="true">{copy.hero.before}{" "}<br /><em>{copy.hero.emphasis}</em> <span className="hero-title__after">{copy.hero.after}</span></span></h1>
           <div className="hero__actions"><PillButton href="#selected-work">{copy.hero.primary}</PillButton><PillButton href="#selected-thinking" variant="outline">{copy.hero.secondary}</PillButton></div>
           <p className="hero__support">{copy.hero.support}</p>
         </div>
         <LogoMarquee />
       </section>
-      <section className="editorial-section" id="selected-thinking"><div className="content-column"><SectionHeading title={copy.thinking.title}><p className="section-intro preline">{copy.thinking.intro}</p><p>{copy.thinking.description}</p></SectionHeading><ArticleList articles={articles[locale]} locale={locale} compact /></div></section>
+      <section className="editorial-section" id="selected-thinking"><div className="content-column"><SectionHeading title={copy.thinking.title}><p className="section-intro preline">{copy.thinking.intro}</p><p>{copy.thinking.description}</p></SectionHeading><ArticleList articles={articles[locale]} locale={locale} compact showCovers /></div></section>
       <section className="process-section"><div className="content-column"><SectionHeading title={copy.process.title}><p>{copy.process.description}</p></SectionHeading></div><ProcessDiagram /></section>
       <section className="editorial-section work-section" id="selected-work"><div className="content-column"><SectionHeading title={copy.work.title}><p className="section-intro">{copy.work.intro}</p></SectionHeading><ProjectList projects={projects[locale]} locale={locale} /></div></section>
     </main>

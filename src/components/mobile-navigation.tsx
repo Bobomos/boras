@@ -2,54 +2,58 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
 import { siteCopy } from "@/content/data";
 import type { Locale } from "@/content/types";
+import { Arrow } from "./icons";
 import { LanguageSwitcher } from "./language-switcher";
 
 export function MobileNavigation({ locale }: { locale: Locale }) {
-  const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const panelRef = useRef<HTMLDivElement>(null);
-  const copy = siteCopy[locale];
-  const closeMenu = () => {
-    setOpen(false);
-    requestAnimationFrame(() => triggerRef.current?.focus());
-  };
+  const panelRef = useRef<HTMLDialogElement>(null);
+  const pathname = usePathname();
+  const { nav } = siteCopy[locale];
+  const thinkingHref = `/${locale}/thinking`;
+  const workHref = `/${locale}/work`;
+  const closeMenu = () => panelRef.current?.close();
 
   useEffect(() => {
-    document.body.classList.toggle("menu-open", open);
-    if (!open) return () => document.body.classList.remove("menu-open");
+    panelRef.current?.close();
+  }, [pathname]);
 
-    const panel = panelRef.current;
-    const focusable = () => [...(panel?.querySelectorAll<HTMLElement>('a[href], button:not([disabled])') ?? [])];
-    requestAnimationFrame(() => focusable()[0]?.focus());
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") { event.preventDefault(); closeMenu(); return; }
-      if (event.key !== "Tab") return;
-      const items = focusable(); if (!items.length) return;
-      const first = items[0]; const last = items[items.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+  useEffect(() => {
+    const mobileViewport = window.matchMedia("(max-width: 900px)");
+    const closeOnDesktop = (event: MediaQueryListEvent) => {
+      if (!event.matches) closeMenu();
     };
-    document.addEventListener("keydown", onKeyDown);
-    return () => { document.removeEventListener("keydown", onKeyDown); document.body.classList.remove("menu-open"); };
-  }, [open]);
+    mobileViewport.addEventListener("change", closeOnDesktop);
+    return () => mobileViewport.removeEventListener("change", closeOnDesktop);
+  }, []);
+
   return (
     <div className="mobile-nav">
-      <button ref={triggerRef} className="mobile-nav__trigger" type="button" aria-expanded={open} aria-controls="mobile-menu" onClick={() => open ? closeMenu() : setOpen(true)}>{open ? copy.nav.close : copy.nav.menu}</button>
-      {open ? (
-        <div ref={panelRef} className="mobile-nav__panel" id="mobile-menu" role="dialog" aria-modal="true" aria-labelledby="mobile-menu-title">
-          <h2 id="mobile-menu-title" className="sr-only">{copy.nav.menu}</h2>
-          <div className="mobile-nav__top"><Link href={`/${locale}`} onClick={closeMenu}><Image src="/logo.svg" alt="Bora Sıpal" width={95} height={40} /></Link><button type="button" onClick={closeMenu}>{copy.nav.close}</button></div>
-          <nav aria-label="Mobile navigation">
-            <Link href={`/${locale}/thinking`} onClick={closeMenu}>{copy.nav.thinking}</Link>
-            <Link href={`/${locale}/work`} onClick={closeMenu}>{copy.nav.work}</Link>
-            <a href="https://www.linkedin.com/in/borasipal/" target="_blank" rel="noreferrer" onClick={closeMenu}>{copy.nav.conversation}<span className="sr-only"> (opens in a new tab)</span></a>
-          </nav>
-          <LanguageSwitcher locale={locale} compact />
+      <button className="mobile-nav__trigger" type="button" aria-haspopup="dialog" aria-controls="mobile-menu" onClick={() => panelRef.current?.showModal()}>{nav.menu}</button>
+      <dialog ref={panelRef} className="mobile-nav__panel" id="mobile-menu" aria-label={nav.menu}>
+        <div className="mobile-nav__top nav-shell">
+          <Link className="brand" href={`/${locale}`} onClick={closeMenu}>
+            <Image src="/logo.svg" alt="Bora Sıpal" width={95} height={40} />
+          </Link>
+          <button className="mobile-nav__close" type="button" onClick={closeMenu}>
+            {nav.close}
+            <svg aria-hidden="true" width="14" height="14" viewBox="0 0 14 14">
+              <path d="m3 3 8 8m0-8-8 8" fill="none" stroke="currentColor" strokeLinecap="round" />
+            </svg>
+          </button>
         </div>
-      ) : null}
+        <nav className="mobile-nav__links" aria-label={nav.menu}>
+          <Link href={thinkingHref} aria-current={pathname === thinkingHref ? "page" : undefined} onClick={closeMenu}>{nav.thinking}<Arrow /></Link>
+          <Link href={workHref} aria-current={pathname === workHref ? "page" : undefined} onClick={closeMenu}>{nav.work}<Arrow /></Link>
+        </nav>
+        <div className="mobile-nav__bottom">
+          <a className="mobile-nav__contact" href="https://www.linkedin.com/in/borasipal/" target="_blank" rel="noreferrer" onClick={closeMenu}>{nav.conversation}<span className="sr-only"> (opens in a new tab)</span><Arrow /></a>
+          <LanguageSwitcher locale={locale} compact onSelect={closeMenu} />
+        </div>
+      </dialog>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export const siteCopy: Record<Locale, SiteCopy> = {
     languageName: "English",
     nav: { thinking: "Thinking", work: "Work", services: "Services", conversation: "Connect on LinkedIn", menu: "Menu", close: "Close" },
     hero: { eyebrow: "Product strategy, brand and experience. Currently CMO at Keplera.", before: "Complex products need", emphasis: "clearer", after: "experiences.", primary: "See selected work", secondary: "Read my thinking", support: "I help product teams clarify what they are building, how it should work and why people should trust it." },
-    thinking: { title: "Thinking", intro: "Most products don’t need to look smarter.\nThey need to feel less confusing.", description: "I write about product clarity, AI, trust, aftercare and the unnecessary complexity companies build around otherwise simple things.", all: "View all writing", indexTitle: "Thinking", indexIntro: "Notes on product clarity, trust, AI and the systems around the things people use.", related: "Related writing", back: "Back to Thinking" },
+    thinking: { title: "Thinking", intro: "Most products don’t need to look smarter.\nThey need to feel less confusing.", description: "I write about product clarity, AI, trust, aftercare and the unnecessary complexity companies build around otherwise simple things.", all: "View all writing", indexTitle: "Thinking", indexIntro: "Notes on product clarity, trust, AI and the systems around the things people use.", related: "Related articles", back: "Back to Thinking" },
     process: { title: "How I Work", description: "The work moves from uncertainty to a clear point of view, then into a system teams can build, launch and improve." },
     work: { title: "Selected Work", intro: "Ideas matter when they change what gets built.", caseStudy: "View case study", caseStudyLabel: "Case study", indexTitle: "Work", indexIntro: "Selected product, positioning and experience work for complex products and ambitious teams.", role: "Role", services: "Services", status: "Status", next: "Next project", back: "Back to Work" },
     footer: { title: "Work with me", copy: "I work with teams that need clearer product direction, stronger positioning and a digital experience people can understand and trust.", email: "Email", linkedin: "LinkedIn", note: "Designed by Bora Sıpal. Built with Codex." },
@@ -46,9 +46,27 @@ export const siteCopy: Record<Locale, SiteCopy> = {
 };
 
 const articleBase = [
-  { slug: "premium-product-aftercare", publishedAt: "2026-07-16", featured: true, tags: ["aftercare", "trust"] },
-  { slug: "cac-is-not-decided-at-purchase", publishedAt: "2026-07-16", featured: false, tags: ["growth", "aftercare", "economics"] },
-  { slug: "repeat-purchase-not-email-marketing", publishedAt: "2026-07-16", featured: false, tags: ["retention", "aftercare", "growth"] },
+  {
+    slug: "premium-product-aftercare",
+    publishedAt: "2026-07-16",
+    featured: true,
+    tags: ["aftercare", "trust"],
+    coverImage: { src: "/illustrations/0_1 (1).png", width: 1584, height: 752, objectPosition: "center 67%" },
+  },
+  {
+    slug: "cac-is-not-decided-at-purchase",
+    publishedAt: "2026-07-16",
+    featured: false,
+    tags: ["growth", "aftercare", "economics"],
+    coverImage: { src: "/illustrations/0_1.png", width: 1584, height: 752, objectPosition: "center 55%" },
+  },
+  {
+    slug: "repeat-purchase-not-email-marketing",
+    publishedAt: "2026-07-16",
+    featured: false,
+    tags: ["retention", "aftercare", "growth"],
+    coverImage: { src: "/illustrations/0_2.png", width: 1584, height: 752, objectPosition: "center 41%" },
+  },
 ] as const;
 
 const articleTranslations: Record<Locale, Array<{ title: string; description: string; intro: string; body: Article["body"] }>> = {

@@ -5,6 +5,12 @@ const articleDetails = {
   publishedAt: "2026-11-07",
   featured: false,
   tags: ["retention", "aftercare", "trust"],
+  coverImage: {
+    src: "/illustrations/u6616397844_A_canister_vacuum_sits_beneath_a_wide_open_sky_it_b8946b62-15b1-458a-815a-1c16c2286c18_0.png",
+    width: 1584,
+    height: 752,
+    objectPosition: "center 81%",
+  },
 };
 
 export const customerLoyaltyArticles: Record<Locale, Article> = {

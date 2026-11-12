@@ -11,12 +11,12 @@ function localePath(pathname: string, locale: Locale) {
   return parts.join("/") || `/${locale}`;
 }
 
-export function LanguageSwitcher({ locale, compact = false }: { locale: Locale; compact?: boolean }) {
+export function LanguageSwitcher({ locale, compact = false, onSelect }: { locale: Locale; compact?: boolean; onSelect?: () => void }) {
   const pathname = usePathname();
   return (
     <div className={compact ? "locale-links locale-links--mobile" : "locale-links"} aria-label="Language selection">
       {locales.map((item) => (
-        <Link key={item} href={localePath(pathname, item)} hrefLang={item} lang={item} aria-current={item === locale ? "page" : undefined}>
+        <Link key={item} href={localePath(pathname, item)} hrefLang={item} lang={item} aria-current={item === locale ? "page" : undefined} onClick={onSelect}>
           {item.toUpperCase()}
         </Link>
       ))}

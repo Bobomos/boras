@@ -12,5 +12,5 @@ export async function generateMetadata({ params }: LocalePageProps): Promise<Met
 
 export default async function ThinkingPage({ params }: LocalePageProps) {
   const locale = getLocale((await params).locale); if (!locale) notFound(); const copy = siteCopy[locale];
-  return <><SiteHeader locale={locale} /><main id="main-content" className="index-page"><div className="content-column"><header className="page-intro"><p className="eyebrow">Bora Sıpal</p><h1>{copy.thinking.indexTitle}</h1><p>{copy.thinking.indexIntro}</p></header><ArticleList articles={articles[locale]} locale={locale} /></div></main><ContactFooter locale={locale} /></>;
+  return <><SiteHeader locale={locale} /><main id="main-content" className="index-page"><div className="content-column"><header className="page-intro"><p className="eyebrow">Bora Sıpal</p><h1>{copy.thinking.indexTitle}</h1><p>{copy.thinking.indexIntro}</p></header><ArticleList articles={articles[locale]} locale={locale} showCovers /></div></main><ContactFooter locale={locale} /></>;
 }

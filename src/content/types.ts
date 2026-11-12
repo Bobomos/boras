@@ -17,6 +17,12 @@ export type Article = {
   tags: string[];
   featured: boolean;
   draft?: boolean;
+  coverImage?: {
+    src: string;
+    width: number;
+    height: number;
+    objectPosition: string;
+  };
   seoTitle: string;
   seoDescription: string;
   intro?: string;
