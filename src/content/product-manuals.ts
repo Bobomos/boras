@@ -5,6 +5,12 @@ const articleDetails = {
   publishedAt: "2026-11-12",
   featured: false,
   tags: ["aftercare", "trust", "retention"],
+  coverImage: {
+    src: "/illustrations/product-manuals-cover.png",
+    width: 1584,
+    height: 752,
+    objectPosition: "center 45%",
+  },
 };
 
 export const productManualArticles: Record<Locale, Article> = {
